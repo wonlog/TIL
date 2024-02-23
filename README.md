@@ -1,5 +1,4 @@
 # TIL (Today I Learned)
-Today I Learned
 ---
 > 오늘 배우고, 알게 되고, 학습한 개발에 대한 내용을 정리하는 저장소
 >
