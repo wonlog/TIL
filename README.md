@@ -3,11 +3,10 @@
 >
 > 이해한 만큼 작성하고 추가해나갈 잔디의 기록
 
----
 
 ### 잔디
 
----
+
 ### Tool
-- [Git 사용하기](https://github.com/your_username/your_repository)
+- [Git 사용하기](https://github.com/wonlog/TIL/blob/main/Tool/Git.md)
 
