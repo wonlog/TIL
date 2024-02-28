@@ -9,4 +9,4 @@
 
 ### Tool
 - [Git 사용하기](https://github.com/wonlog/TIL/blob/main/Tool/Git.md)
-- [Git branch protection rule]https://t-shaped-person.tistory.com/131)
+- [Git branch protection rule](https://t-shaped-person.tistory.com/131)
