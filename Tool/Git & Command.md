@@ -1,11 +1,57 @@
 ## Todo
-- [ ] 커밋메세지 작성법 정리  
-최초 프로젝트 업로드 시에는 "Upload Initial Project"로 사용하자  
+- [X] 깃 명령어 정리하기
+- [ ] 커밋메세지 규칙 정리하기
+      최초 프로젝트 업로드 시에는 "Upload Initial Project"로 사용하자  
 
 <hr/>
 
 ## Git
-버전 관리 시스템. 소스 관리 툴
+버전 관리 시스템. 소스 관리 툴  
+
+## 커밋  
+편집된 파일을 저장하는 것과 마찬가지로 커밋은 분기에서 하나 이상의 파일에 변경 내용을 기록한다.
+Git은 각 커밋에 다음을 식별하는 SHA 또는 해시라는 고유 ID를 할당한다.  
+- 특정 변경 내용
+- 변경된 시점
+- 변경 내용을 만든 사람
+
+#### 커밋 메세지 구조  
+> type(타입) : title(제목)  
+body(본문, 생략 가능)  
+Resolves : #issueNo, ...(해결한 이슈 , 생략 가능)  
+See also : #issueNo, ...(참고 이슈, 생략 가능)  
+![image](https://github.com/wonlog/TIL/assets/149459170/f70b8e53-7f72-470e-bd7f-bb6fca0a610e)
+
+
+#### 커밋 메세지 규칙  
+> 1. 제목과 본문을 빈 행으로 구분한다.
+> 2. 제목은 50글자 이내로 제한한다.
+> 3. 제목의 첫 글자는 대문자로 작성한다.
+> 4. 제목 끝에는 마침표를 넣지 않는다.
+> 5. 제목은 명령문으로 사용하며 과거형을 사용하지 않는다.
+> 6. 본문의 각 행은 72자 내로 제한한다.
+> 7. 어떻게 보다는 무엇과 왜를 설명한다.
+![image](https://github.com/wonlog/TIL/assets/149459170/cabbe9f7-ff08-4630-8f4c-b2b96614e5d0)
+
+
+#### 커밋 메세지 타입  
+> 자주 사용: feat, fix
+![image](https://github.com/wonlog/TIL/assets/149459170/04e2acae-6db0-40b5-83e1-3da23ffe4510)
+![image](https://github.com/wonlog/TIL/assets/149459170/0ef8a053-ac7b-4052-8c33-8b45fed88478)
+
+#### 커밋 메세지를 GitHub 이슈와 연결  
+> 커밋 메세지에 "#[Issue Number]"를 입력하게 될 경우 자동으로 이슈에 커밋 내용을 추가하게 된다.
+
+#### 커밋과 함께 이슈를 close 할 수 있는 Keyword
+- close
+- closes
+- closed
+- fix
+- fixes
+- fixed
+- resolve
+- resolves
+- resolved
 
 ## 명령어
 < > 로 표시한 것은 상황에 따라 달라질 수 있는 이름임을 인지한다.
@@ -82,5 +128,8 @@ Next.js 프로젝트의 경우, 빌드 시 생성되는 .next 디렉터리도 �
 - .gitignore
 깃에 업로드하지 않을 파일이나 디렉터리 목록을 지정하는 파일입니다.
 
+  
+
 ### reference
-> https://rogerdudler.github.io/git-guide/index.ko.html
+> [git - 간편 안내서](https://rogerdudler.github.io/git-guide/index.ko.html)
+> [좋은 Git Commit Message 작성 가이드라인_티스토리](https://jane-aeiou.tistory.com/93)
