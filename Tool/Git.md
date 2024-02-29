@@ -1,31 +1,62 @@
+## Todo
+- [ ] 커밋메세지 작성법 정리  
+최초 프로젝트 업로드 시에는 "Upload Initial Project"로 사용하자  
+
+<hr/>
+
 ## Git
 버전 관리 시스템. 소스 관리 툴
 
 ## 명령어
-`$ git init`
-새로운 저장소 만들기
-: 폴더를 만들고, 폴더 경로 아래 명령을 실행하면 새로운 git 저장소가 만들어진다.
+< > 로 표시한 것은 상황에 따라 달라질 수 있는 이름임을 인지한다.
 
-`$ git remote add origin https://github.com/wonlog/Lecture.git`
+`$ git init`  
+새로운 저장소 만들기: 폴더를 만들고, 폴더 경로 아래 명령을 실행하면 새로운 git 저장소가 만들어진다.
+
+`$ git remote add origin <https://github.com/wonlog/Lecture.git>`  
 로컬 저장소와 원격 저장소 연결하기
 
-`$ git remote -v`
+`$ git remote -v`  
 현재 설정된 원격 저장소를 확인
 
-`$ git remote remove origin`
+`$ git remote remove origin`  
 기존의 원격저장소 제거
 
-`$ git add <파일 이름>`
-변경된 파일 추가하기
+`$ git add <파일 이름>`  
+변경된 특정 파일 추가하기
 
-`$ git add .`
+`$ git add <폴더 이름>`  
+변경된 특정 폴더 추가하기
+
+`$ git add .`  
 변경사항 모두 추가하기
 
-`$ git commit -m "확정된 내역에 대한 설명 메세지"`
+`$ git commit -m "확정된 내역에 대한 설명 메세지"`  
 변경 내용이 HEAD에 반영되었지만, 원격 저장소에 반영이 되지 않았다. -> push
 
-`$ git push origin main(혹은 원하는 브랜치명)`
+`$ git push origin <main(브랜치)>`  
 변경 내용을 원격 저장소에 반영하기
+
+`$ git branch`  
+현재 브랜치 확인하기
+
+`$ git checkout <main>`  
+main 브랜치로 체크아웃
+
+`$ git branch -m <upload>`  
+main 브랜치를 upload로 이름을 변경
+
+`$ git push -u origin <upload>`  
+변경된 브랜치를 원격 저장소에 푸시
+
+`$ git branch -d <main>`  
+로컬 저장소에서 main 브랜치를 삭제
+
+`$ git push origin --delete <main>`  
+원격 저장소에서 main 브랜치를 삭제
+
+`$ git push -u origin <upload:main>0`  
+원격 저장소에 upload 브랜치가 없다면, upload 브랜치를 원격 저장소의 main 브랜치로 변경
 
 ## 깃에 올리지 않아도 되는 파일/디렉터리:
 - node_modules/
@@ -38,6 +69,7 @@
 macOS의 .DS_Store나 Windows의 Thumbs.db 같은 운영 체제에서 생성하는 숨김 파일들은 프로젝트와 관련이 없으므로 업로드할 필요가 없습니다.
 - .next/
 Next.js 프로젝트의 경우, 빌드 시 생성되는 .next 디렉터리도 깃에 업로드하지 않아야 합니다.
+
 ## 깃에 올리는 파일/디렉터리:
 - src/
 소스 코드, 컴포넌트, 스타일 파일 등 프로젝트의 핵심이 되는 파일들입니다.
