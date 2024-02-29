@@ -2,7 +2,17 @@
 `$ npx create-react-app begin-react`  
 `$ cd begin-react`  
 `$ npm start`<br/>
-<br/><br/>
+<br/>
+
+**렌더링이란?**  
+React 애플리케이션에서 컴포넌트 구조와 상태에 따라 동적으로 사용자 인터페이스(UI)를 생성하고 업데이트하는 과정을 말한다.  
+컴포넌트 간의 관계와 데이터 흐름을 효율적으로 관리하여 사용자가 원하는 화면을 표시할 수 있도록 한다.
+UI를 표현하는 데 JSX(JavaSCript XML) 문법을 사용한다. 렌더링은 다음과 같은 과정을 거친다.  
+1. 컴포넌트 생성: React에서 UI는 컴포넌트 단위로 구성된다. 각 컴포넌트는 JavaScript 함수나 클래스로 정의되며, UI의 특정 부분을 나타낸다.
+2. 가상 DOM 생성: React는 컴포넌트가 렌더링될 때 해당 컴포넌트의 가상 DOM을 생성한다. 가상 DOM은 실제 DOM과 유사한 구조를 가지지만 메모리 상에 존재하며 브라우저의 실제 DOM과 동기화되지 않는다.
+3. 렌더링: React는 가상 DOM을 사용하여 실제 HTML 엘리먼트를 생성한다. 이 과정에서 JSX 문법을 사용하고, 컴포넌트의 props와 state를 기반으로 UI를 동적으로 생성한다.
+4. 화면에 표시: React가 생성한 HTML 엘리먼트는 실제 브라우저 화면에 표시된다. 이 때, React는 가상 DOM과 실제 DOM 간의 변경 사항을 효율적으로 비교하고, 변경이 필요한 부분만 업데이트한다.
+<br/>
 
 ## 리액트 컴포넌트
 **index.js**  
@@ -280,6 +290,56 @@ export default function TodoList() {
 }
 ```
 
+## props  
+React 컴포넌트는 props를 통해 통신한다.  
+모든 상위 컴포넌트(parent component)는 하위 컴포넌트(child component)에게 props를 제공하여 정보를 전달할 수 있다.  
+HTML 속성과 유사한 개념이지만, props를 통해 JavaScript의 모든 종류의 값을 전달할 수 있다. (객체, 배열, 함수 등)
+
+**props**  
+JSX 태그에 전달하는 정보. props를 사용하면 리액트 컴포넌트 간에 데이터를 전달하고, 이를 기반으로 동적 UI를 생성할 수 있다. 
+
+**props로 전달할 수 있는 형태**  
+- 문자열(String): "example"
+- 숫자(Number): { 10 } 또는 { 3.14 }
+- 불리언(Boolean): { true } 또는 { false }
+- 객체(Object): { { key: value } }
+- 배열(Array): { [1, 2, 3] }
+- 함수(Function): { () => { console.log('Hello') } }
+- 콜백 함수(Callback Function): onClick={handleClick}와 같이 이벤트 핸들러에 전달됩니다.
+- React 요소(React Element): 다른 React 컴포넌트가 될 수 있습니다. 예를 들어, <MyComponent />와 같이 다른 컴포넌트를 Props로 전달할 수 있습니다.
+- JSX(JavaScript XML): JSX 코드 조각도 Props로 전달할 수 있습니다. 예를 들어, { <div>Hello</div> }와 같이 JSX를 Props로 전달할 수 있습니다.
+
+**children**
+컴포넌트가 렌더링될 때 JSX 태그 내에 포함된 내용을 나타낸다. 
+
+**코드**
+```
+function Avatar() {
+  return (
+    <img
+      className="avatar"
+      src="https://i.imgur.com/1bX5QH6.jpg"
+      alt="Lin Lanying"
+      width={100}
+      height={100}
+    />
+  );
+}
+
+export default function Profile() {
+  return (
+    <Avatar />
+  );
+}
+```
+Avatar 컴포넌트를 바로 외부로 호출가능하게 만들지 않고, Profile 컴포넌트를 하나 더 만든 이유는 다른 컴포넌트들이 추가, 조합될 수 있기 때문이다. 이렇게 사용하면 Profile 컴포넌트를 더욱 범용적이고 재사용성이 높아질 수 있는 방법이다.
+
+
+
+
+
+
+
 
 
 
@@ -292,3 +352,4 @@ export default function TodoList() {
 2. [벨로퍼트와 함께하는 모던 리액트](https://react.vlpt.us/)
 3. [BABEL: 자바스크립트의 문법을 확장해주는 도구](https://babeljs.io/repl#?browsers=defaults%2C%20not%20ie%2011%2C%20not%20ie_mob%2011&build=&builtIns=false&corejs=3.21&spec=false&loose=false&code_lz=DwEwlgbgfAUABHYAjKAJApgG0we2AehTgHUcAnTEAQhgPGiA&debug=false&forceAllTransforms=false&modules=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=env%2Creact%2Cstage-2&prettier=false&targets=&version=7.24.0&externalPlugins=&assumptions=%7B%7D)
 4. [transform HTML to JSX](https://transform.tools/html-to-jsx)
+5. [React.Children : 카카오 엔터테인먼트 FE 기술블로그](https://fe-developers.kakaoent.com/2021/211022-react-children-tip/)
