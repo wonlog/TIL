@@ -1,11 +1,11 @@
 ## 새 프로젝트 만들기
-`$ npx create-react-app begin-react`<br/>
-`$ cd begin-react`<br/>
+`$ npx create-react-app begin-react`  
+`$ cd begin-react`  
 `$ npm start`<br/>
 <br/><br/>
 
 ## 리액트 컴포넌트
-**index.js**<br/><br/>
+**index.js**  
 ReactDOM.render: 브라우저에 있는 실제 DOM 내부에 리액트 컴포넌트를 렌더링하겠다는 의미. id가 root인 DOM은 `index.html` 내부의
 `<div id="root"></div>`에서 찾을 수 있다.
 
@@ -101,21 +101,184 @@ JSX에서는 모든 태그를 명시적으로 닫아야 한다.
 변수 이름의 제한: 대시를 포함하거나 예약어를 사용할 수 없다.
 `class`는 예약어이기 때문에 사용하지 않고 `className`을 사용한다.
 
-
-
-
-
-
-
-
-
-
-
-
+`Challenge` HTML 문법으로 쓴 코드를 JSX로 변환하라
 ```
-return <div>안녕하세요</div>;
+export default function Bio() {
+  return (
+    <div class="intro">
+      <h1>Welcome to my website!</h1>
+    </div>
+    <p class="summary">
+      You can find my thoughts here.
+      <br><br>
+      <b>And <i>pictures</b></i> of scientists!
+    </p>
+  );
+}
 ```
 
+`Solution`
+```
+export default function Bio() {
+  return (
+    <div>
+      <div className="intro">
+        <h1>Welcome to my website!</h1>
+      </div>
+      <p className="summary">
+        You can find my thoughts here.
+        <br/><br/>
+        <b>And <i>pictures</i></b> of scientists!
+      </p>
+    </div>
+  );
+}
+```
+
+### JavaScript in JSX with Curly Braces
+문자열 속성을 JSX로 전달하려면 작은 따옴표(single quotes)나 큰 따옴표(double quotes)로 묶는다.<br/>
+속성을 동적으로 지정하려면 중괄호(curly braces)로 묶는다. 중괄호를 사용하면 마크업에서 바로 JavaScript로 작업할 수 있다.
+
+1. 따옴표 안의 JSX 속성은 문자열로 전달된다.
+2. 중괄호를 사용하면 JavaScript 논리와 변수를 마크업으로 가져올 수 있다.
+3. JSX 태그 콘텐츠 내부 또는 =속성 바로 뒤에서 작동한다.
+4. {{ }} : JSX 중괄호 안에 집어넣은 JavaScript 객체이다.
+
+`Solution` Use " "
+```
+export default function Avatar() {
+  return (
+    <img
+      className= "avatar"
+      src="https://i.imgur.com/7vQD0fPs.jpg"
+      alt="Gregorio Y. Zara"
+    />
+  );
+}
+```
+
+`Solution` Use { }
+```
+export default function Avatar() {
+  const avatar = 'https://i.imgur.com/7vQD0fPs.jpg';
+  const description = 'Gregorio Y. Zara';
+  return (
+    <img
+      className="avatar"
+      src={avatar}
+      alt={description}
+    />
+  );
+}
+```
+
+요일을 정하는 함수와도 사용할 수 있다.
+```
+const today = new Date();
+
+function formatDate(date) {
+  return new Intl.DateTimeFormat(
+    'en-US',
+    { weekday: 'long' }
+  ).format(date);
+}
+
+export default function TodoList() {
+  return (
+    <h1>To Do List for {formatDate(today)}</h1>
+  );
+}
+```
+![image](https://github.com/wonlog/TIL/assets/149459170/c30a3cda-e5a4-4a49-a8e2-2c7ff4d900e4)
+
+### Where to use curly braces  
+1. JSX 태그 내부의 텍스트로 <h1>{name}'s To Do List</h1> : 작동하지만 <{tag}>Gregorio Y. Zara's To Do List</{tag}> 작동하지 않습니다.
+2. `src={avatar}`는 `avatar`라는 변수를 읽지만, `src="{avatar}"`는 `"{avatar}"`라는 문자열로 전달한다. 
+
+### Using “double curlies”: CSS and other objects in JSX  
+JSX에서 객체를 전달할 때 객체를 또다른 중괄호 쌍으로 묶어야 한다. 보통 CSS 표현할 때 사용한다.
+```
+export default function TodoList() {
+  return (
+    <ul style={{
+      backgroundColor: 'black',
+      color: 'pink'
+    }}>
+      <li>Improve the videophone</li>
+      <li>Prepare aeronautics lectures</li>
+      <li>Work on the alcohol-fuelled engine</li>
+    </ul>
+  );
+}
+```
+`Tip`  
+인라인 style 속성은 camelCase로 작성된다. 별도의 css 파일은 아닌 경우도 있음!
+
+`Challenge` 코드에 오류가 있는 부분을 고쳐라
+```
+
+const baseUrl = 'https://i.imgur.com/';
+const person = {
+  name: 'Gregorio Y. Zara',
+  imageId: '7vQD0fP',
+  imageSize: 's',
+  theme: {
+    backgroundColor: 'black',
+    color: 'pink'
+  }
+};
+
+export default function TodoList() {
+  return (
+    <div style={person.theme}>
+      <h1>{person.name}'s Todos</h1>
+      <img
+        className="avatar"
+        src="{baseUrl}{person.imageId}{person.imageSize}.jpg"
+        alt={person.name}
+      />
+      <ul>
+        <li>Improve the videophone</li>
+        <li>Prepare aeronautics lectures</li>
+        <li>Work on the alcohol-fuelled engine</li>
+      </ul>
+    </div>
+  );
+}
+```
+
+`Solution`
+```
+const baseUrl = 'https://i.imgur.com/';
+const person = {
+  name: 'Gregorio Y. Zara',
+  imageId: '7vQD0fP',
+  imageSize: 's',
+  theme: {
+    backgroundColor: 'black',
+    color: 'pink'
+  }
+};
+
+export default function TodoList() {
+  return (
+    <div style={person.theme}>
+      <h1>{person.name}'s Todos</h1>
+      <img
+        className="avatar"
+        // 여러 속성을 필요로할 때: { 속성1 + 속성2 }
+        src={baseUrl + person.imageId + person.imageSize + '.jpg'}
+        alt={person.name}
+      />
+      <ul>
+        <li>Improve the videophone</li>
+        <li>Prepare aeronautics lectures</li>
+        <li>Work on the alcohol-fuelled engine</li>
+      </ul>
+    </div>
+  );
+}
+```
 
 
 
@@ -125,7 +288,7 @@ return <div>안녕하세요</div>;
 <br/><br/>
 
 **Reference**
-- [React 홈페이지(한국어)](https://ko.legacy.reactjs.org/)
-- [벨로퍼트와 함께하는 모던 리액트](https://react.vlpt.us/)
-- [BABEL: 자바스크립트의 문법을 확장해주는 도구](https://babeljs.io/repl#?browsers=defaults%2C%20not%20ie%2011%2C%20not%20ie_mob%2011&build=&builtIns=false&corejs=3.21&spec=false&loose=false&code_lz=DwEwlgbgfAUABHYAjKAJApgG0we2AehTgHUcAnTEAQhgPGiA&debug=false&forceAllTransforms=false&modules=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=env%2Creact%2Cstage-2&prettier=false&targets=&version=7.24.0&externalPlugins=&assumptions=%7B%7D)
-- [convert HTML to JSX](https://transform.tools/html-to-jsx)
+1. [React 홈페이지(한국어)](https://ko.legacy.reactjs.org/)
+2. [벨로퍼트와 함께하는 모던 리액트](https://react.vlpt.us/)
+3. [BABEL: 자바스크립트의 문법을 확장해주는 도구](https://babeljs.io/repl#?browsers=defaults%2C%20not%20ie%2011%2C%20not%20ie_mob%2011&build=&builtIns=false&corejs=3.21&spec=false&loose=false&code_lz=DwEwlgbgfAUABHYAjKAJApgG0we2AehTgHUcAnTEAQhgPGiA&debug=false&forceAllTransforms=false&modules=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=env%2Creact%2Cstage-2&prettier=false&targets=&version=7.24.0&externalPlugins=&assumptions=%7B%7D)
+4. [transform HTML to JSX](https://transform.tools/html-to-jsx)
