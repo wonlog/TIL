@@ -41,5 +41,5 @@ REST는 REpresentational State Transfer의 약어이다.
 4. **필터를 위해 쿼리 파라미터를 사용해라**
 
 ### 함께 읽은 글
-(RESTful API를 위한 6가지 원칙과 네이밍 규칙)[https://prohannah.tistory.com/156]
-
+[RESTful API를 위한 6가지 원칙과 네이밍 규칙](https://prohannah.tistory.com/156)
+https://restfulapi.net
