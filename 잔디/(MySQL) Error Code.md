@@ -1,7 +1,7 @@
 ## Error
 
 ## Fix
-**[Error Code: 1175]**  
+### [Error Code: 1175]
 
 - You are using safe update mode and you tried to update a table without a WHERE that uses a KEY column.
   To disable safe mode, toggle the option in Preferences -> SQL Editor and reconnect.
@@ -21,7 +21,7 @@
      set sql_safe_updates = 1;
      ```
 
-**[Error Code: 1217]**  
+### [Error Code: 1217]
 
 - Cannot delete or update a parent row: a foreign key constraint fails  
   
